@@ -1,0 +1,21 @@
+# to run: docker-compose up -d
+# to down: docker-compose down
+# to connect to your mysql container and run your SQL commands use the below (mysql is the name you gave the container):
+# docker exec -it mySqlDB mysql -uroot -p -> enter root's password
+# to create DB: create database spring_security_db;
+# to stop container: docker container stop mySqlDB
+# ro delete the container: docker container rm mySqlDB
+
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mySqlDB
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
