@@ -19,5 +19,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .and().exceptionHandling().accessDeniedPage("/accessDenied");
     }
 
+
+    // in production, passwords are kept in an encoded format in DB.
+    // if password are encoded using BCrypt algorithm, then uncomment the below bean.
+    // Spring Security is smart and will use this bean automatically to encode
+    // the password that the user enters before comparing it with the passwords in DB
+    /*
+    @Bean
+    public BCryptPasswordEncoder pwdEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+    */
 }
 
